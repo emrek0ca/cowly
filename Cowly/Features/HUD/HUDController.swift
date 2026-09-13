@@ -169,7 +169,7 @@ enum Brightness {
         return unsafeBitCast(pointer, to: GetBrightness.self)
     }()
 
-    private nonisolated(unsafe) static let setter: SetBrightness? = {
+    private static let setter: SetBrightness? = {
         guard let handle, let pointer = dlsym(handle, "DisplayServicesSetBrightness") else { return nil }
         return unsafeBitCast(pointer, to: SetBrightness.self)
     }()

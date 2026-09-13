@@ -4,7 +4,19 @@ A Dynamic Island for the Mac notch — file shelf, media player, clipboard
 history, live activities and switchable extensions. Local-only, free, no
 account. Built with SwiftUI on macOS 26.
 
-![Cowly](Cowly/Resources/Assets.xcassets/AppIcon.appiconset/icon_256x256.png)
+<p align="center">
+  <img src="assets/icon.png" width="128" height="128" alt="Cowly Icon" />
+</p>
+
+<p align="center">
+  <img src="assets/shelf-home.png" width="48%" alt="Shelf Home" />
+  <img src="assets/shelf-tray.png" width="48%" alt="Shelf Tray" />
+</p>
+
+<p align="center">
+  <img src="assets/shelf-droplets.png" width="48%" alt="Shelf Droplets" />
+  <img src="assets/shelf-activity.png" width="48%" alt="Shelf Live Activity" />
+</p>
 
 **Requirements**: macOS 14 or later. Xcode 26 and
 [XcodeGen](https://github.com/yonaskolb/XcodeGen) to build.
@@ -23,11 +35,7 @@ drag **Cowly** into **Applications**, then run:
 xattr -dr com.apple.quarantine /Applications/Cowly.app
 ```
 
-That second step is not optional. Cowly is ad-hoc signed rather than notarised,
-so macOS quarantines it and refuses the first launch with *"Apple could not
-verify Cowly is free of malware"*. The signature itself is valid —
-`codesign --verify --deep --strict` passes — it just has not been through
-Apple's notary service, which requires a paid Developer membership.
+Cowly is signed with an official **Apple Developer ID Application** certificate (Osman Emre Koca) and Hardened Runtime. If macOS asks to verify on first launch, you can open **System Settings › Privacy & Security**, scroll down and click **Open Anyway**, or run the command above.
 
 Run the command **after** the app is in Applications; running it against the
 mounted disk image does nothing, because that volume is read-only.
@@ -210,13 +218,13 @@ yeniden eklemek gerekiyor.
 ## Eski izin listesi
 
 Erişilebilirlik (kısayol + yapıştırma), Otomasyon (Music/Spotify),
-Kamera (Face Unlock + Kamera droplet'i), Takvim, Konum (hava durumu).
+Kamera (Kamera droplet'i canlı önizleme), Takvim, Konum (hava durumu).
 Hepsi ilk kullanımda istenir; Ayarlar › About altından sistem paneline gidilir.
 
 ## Veri
 
-`~/Library/Application Support/Cowly/` — tray dosyaları, pano geçmişi, notlar,
-yüz kaydı. Hiçbiri cihazdan çıkmıyor, hesap yok, telemetri yok.
+`~/Library/Application Support/Cowly/` — tray dosyaları, pano geçmişi, notlar.
+Hiçbiri cihazdan çıkmıyor, hesap yok, telemetri yok.
 
 ## Çentikle birleşme
 
@@ -356,5 +364,5 @@ Hiçbiri gerçek tercihleri veya tray'i değiştirmez.
 ## Droppy ile farkı
 
 Droppy'nin 36 droplet'i, iOS senkronizasyonu ve bulut paylaşımı var; burada
-13 droplet var ve her şey yerel. Raf, tray, sepet, pano, HUD'lar, canlı
+14 droplet var ve her şey yerel. Raf, tray, sepet, pano, HUD'lar, canlı
 aktiviteler ve kilit akışı birebir aynı fikirle, sıfırdan yazıldı.

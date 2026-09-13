@@ -854,7 +854,7 @@ struct SecuritySettings: View {
             )
             .font(.caption)
             .foregroundStyle(.secondary)
-            Text("What Cowly can do is pull a full-screen curtain over your desktop that lifts when it recognises your face. It hides your work; it does not secure the Mac.")
+            Text("What Cowly can do is pull a full-screen curtain over your desktop that lifts with Touch ID or your password. It hides your work; it does not secure the Mac.")
                 .font(.caption).foregroundStyle(.secondary)
             HStack {
                 Button("Cover screen now") { LockScreenController.shared.present() }
@@ -915,9 +915,7 @@ struct AboutSettings: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(spacing: 14) {
-                Image(systemName: "drop.fill")
-                    .font(.system(size: 44))
-                    .foregroundStyle(Theme.Palette.accent)
+                CowFace(size: 44, tint: Theme.Palette.accent)
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Cowly").font(.largeTitle.bold())
                     Text("Version \(version)").foregroundStyle(.secondary)
