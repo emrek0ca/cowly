@@ -14,9 +14,18 @@ brew install xcodegen
 make run
 ```
 
-The app is ad-hoc signed, not notarised. macOS will refuse the first launch of
-a downloaded build: right-click the app and choose **Open**, or run
-`xattr -dr com.apple.quarantine /Applications/Cowly.app`.
+**Download**: grab the `.dmg` from
+[Releases](https://github.com/emrek0ca/cowly/releases), open it and drag Cowly
+to Applications.
+
+The build is ad-hoc signed and not notarised, so macOS blocks the first launch.
+On macOS 15 and later the old right-click → Open trick no longer works; open
+**System Settings › Privacy & Security**, scroll to the bottom and click
+**Open Anyway**. Or clear the quarantine flag yourself:
+
+```bash
+xattr -dr com.apple.quarantine /Applications/Cowly.app
+```
 
 Everything below is in Turkish — it is the working documentation for the
 project, including why several things are built the way they are.

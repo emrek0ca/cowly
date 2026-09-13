@@ -25,14 +25,18 @@ run: debug
 	@pkill -f "$(APP).app" || true
 	open $(BUILD)/Build/Products/Debug/$(APP).app
 
-# Zips the release build for a GitHub release. The app is ad-hoc signed, so
-# ditto is used to preserve the signature inside the archive.
+VERSION := $(shell /usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(BUILD)/Build/Products/Release/$(APP).app/Contents/Info.plist 2>/dev/null)
+
+# Builds the disk image people actually download: the app next to an
+# Applications shortcut, so installing is one drag.
 dist: release
-	@rm -rf $(DIST) && mkdir -p $(DIST)
-	ditto -c -k --sequesterRsrc --keepParent \
-		$(BUILD)/Build/Products/Release/$(APP).app \
-		$(DIST)/$(APP).zip
-	@shasum -a 256 $(DIST)/$(APP).zip
+	@rm -rf $(DIST) && mkdir -p $(DIST)/stage
+	cp -R $(BUILD)/Build/Products/Release/$(APP).app $(DIST)/stage/
+	ln -s /Applications $(DIST)/stage/Applications
+	hdiutil create -volname "$(APP)" -srcfolder $(DIST)/stage \
+		-ov -format UDZO -fs HFS+ $(DIST)/$(APP)-$(VERSION).dmg
+	@rm -rf $(DIST)/stage
+	@shasum -a 256 $(DIST)/$(APP)-$(VERSION).dmg
 
 clean:
 	rm -rf $(BUILD) $(DIST) $(PROJECT)
