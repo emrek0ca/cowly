@@ -155,7 +155,8 @@ final class WeatherStore: NSObject, CLLocationManagerDelegate {
     }
 
     nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let authorized = manager.authorizationStatus == .authorizedAlways
+        let status = manager.authorizationStatus
+        let authorized = status == .authorizedAlways || status == .authorized
         MainActor.assumeIsolated {
             if authorized { self.locationManager.requestLocation() }
         }

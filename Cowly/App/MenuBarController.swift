@@ -23,7 +23,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()
 
-        menu.addItem(action("Open Shelf", key: "d") { NotchViewModel.shared.open(tab: .home) })
+        menu.addItem(action("Open Shelf", key: "c", modifiers: [.command, .option]) { NotchViewModel.shared.open(tab: .home) })
         menu.addItem(action("Open Tray") { NotchViewModel.shared.open(tab: .tray) })
         menu.addItem(action("Open Droplets") { NotchViewModel.shared.open(tab: .droplets) })
         menu.addItem(.separator())
@@ -59,7 +59,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         docksItem.submenu = docks
         menu.addItem(docksItem)
 
-        menu.addItem(action("Cover Screen (⌥⌘L)") { LockScreenController.shared.present() })
+        menu.addItem(action("Cover Screen", key: "l", modifiers: [.command, .option]) { LockScreenController.shared.present() })
 
         let gate = BiometricGate.shared
         if !gate.unlocked.isEmpty {
@@ -71,8 +71,11 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         menu.addItem(action("Quit Cowly", key: "q") { NSApp.terminate(nil) })
     }
 
-    private func action(_ title: String, key: String = "", handler: @escaping () -> Void) -> NSMenuItem {
+    private func action(_ title: String, key: String = "", modifiers: NSEvent.ModifierFlags = .command, handler: @escaping () -> Void) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: #selector(MenuAction.fire(_:)), keyEquivalent: key)
+        if !key.isEmpty {
+            item.keyEquivalentModifierMask = modifiers
+        }
         let target = MenuAction(handler: handler)
         item.target = target
         item.representedObject = target

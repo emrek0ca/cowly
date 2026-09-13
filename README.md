@@ -29,21 +29,19 @@ make run
 ## Install
 
 Grab the `.dmg` from [Releases](https://github.com/emrek0ca/cowly/releases),
-drag **Cowly** into **Applications**, then run:
+drag **Cowly** into **Applications**, and launch Cowly.
+
+Cowly is built with Hardened Runtime and signed with an official **Apple Developer ID Application** certificate (Osman Emre Koca).
+
+*For unnotarized builds or manual transfers:*
+If macOS displays a verification warning on first launch, you can open **System Settings › Privacy & Security**, scroll down and click **Open Anyway**, or clear the quarantine flag in Terminal:
 
 ```bash
 xattr -dr com.apple.quarantine /Applications/Cowly.app
 ```
 
-Cowly is signed with an official **Apple Developer ID Application** certificate (Osman Emre Koca) and Hardened Runtime. If macOS asks to verify on first launch, you can open **System Settings › Privacy & Security**, scroll down and click **Open Anyway**, or run the command above.
-
 Run the command **after** the app is in Applications; running it against the
 mounted disk image does nothing, because that volume is read-only.
-
-Prefer not to use Terminal? Double-click Cowly once and let it be blocked, then
-open **System Settings › Privacy & Security**, scroll to the bottom and click
-**Open Anyway**. The button only appears after a blocked attempt. On macOS 15
-and later the old right-click → Open trick no longer works.
 
 ## Build it yourself
 
