@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Cowly</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Free and open. Built with SwiftUI.</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<false/>
+	<key>NSSupportsSuddenTermination</key>
+	<false/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Cowly uses Apple Events to read and control playback in Music, Spotify and other media apps.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Cowly needs the microphone for voice memos and on-device transcription.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Cowly shows a live camera preview inside your notch.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Cowly shows your upcoming events on the shelf.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>Cowly shows and creates reminders from the shelf.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Cowly transcribes voice memos on device.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Cowly uses Touch ID to unlock your protected tray, clipboard and locked actions.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Cowly shows local weather on your shelf.</string>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>Cowly saves and reads files you drop onto the notch.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>Cowly saves and reads files you drop onto the notch.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>Cowly saves and reads files you drop onto the notch.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,42 @@
+name: Cowly
+options:
+  bundleIdPrefix: dev.emrekoca
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  generateEmptyDirectories: false
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: minimal
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEAD_CODE_STRIPPING: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: NO
+    SWIFT_EMIT_LOC_STRINGS: YES
+
+targets:
+  Cowly:
+    type: application
+    platform: macOS
+    sources:
+      - path: Cowly
+        excludes:
+          - "Resources/Info.plist"
+          - "Resources/Cowly.entitlements"
+    settings:
+      base:
+        PRODUCT_NAME: Cowly
+        PRODUCT_BUNDLE_IDENTIFIER: dev.emrekoca.Cowly
+        INFOPLIST_FILE: Cowly/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Cowly/Resources/Cowly.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_PREVIEWS: YES
+        COMBINE_HIDPI_IMAGES: YES
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
