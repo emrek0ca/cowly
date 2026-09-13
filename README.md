@@ -14,18 +14,37 @@ brew install xcodegen
 make run
 ```
 
-**Download**: grab the `.dmg` from
-[Releases](https://github.com/emrek0ca/cowly/releases), open it and drag Cowly
-to Applications.
+## Install
 
-The build is ad-hoc signed and not notarised, so macOS blocks the first launch.
-On macOS 15 and later the old right-click → Open trick no longer works; open
-**System Settings › Privacy & Security**, scroll to the bottom and click
-**Open Anyway**. Or clear the quarantine flag yourself:
+Grab the `.dmg` from [Releases](https://github.com/emrek0ca/cowly/releases),
+drag **Cowly** into **Applications**, then run:
 
 ```bash
 xattr -dr com.apple.quarantine /Applications/Cowly.app
 ```
+
+That second step is not optional. Cowly is ad-hoc signed rather than notarised,
+so macOS quarantines it and refuses the first launch with *"Apple could not
+verify Cowly is free of malware"*. The signature itself is valid —
+`codesign --verify --deep --strict` passes — it just has not been through
+Apple's notary service, which requires a paid Developer membership.
+
+Run the command **after** the app is in Applications; running it against the
+mounted disk image does nothing, because that volume is read-only.
+
+Prefer not to use Terminal? Double-click Cowly once and let it be blocked, then
+open **System Settings › Privacy & Security**, scroll to the bottom and click
+**Open Anyway**. The button only appears after a blocked attempt. On macOS 15
+and later the old right-click → Open trick no longer works.
+
+## Build it yourself
+
+```bash
+brew install xcodegen
+make run
+```
+
+Building locally sidesteps all of the above — nothing is quarantined.
 
 Everything below is in Turkish — it is the working documentation for the
 project, including why several things are built the way they are.
